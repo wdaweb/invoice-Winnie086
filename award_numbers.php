@@ -1,25 +1,64 @@
-<form action="api/add_award_number.php" method="post">
+<?php
+include_once "base.php"
+
+if(isset($_GET['pd'])){
+  $year=explode("-",$_GET['pd'])[0];
+  $period=explode("-",$_GET['pd'])['1'];
+}else{
+  $get_new=$pdo->query("SELECT * FROM `award_numbers` order by year desc, period desc limit 1")->fetchAll();
+
+
+
+}
+
+// echo "year=".$year
+// echo "<br>";
+// echo "period=".$period;
+$awards=$pdo->query("select *from award_numbers where year='$year' && period='$period'")->fetchAll();
+$special="";
+$grand="";
+$first=[];
+$six=[];
+
+foreach($awards as $aw){
+  switch($aw['type']){
+    case 1:
+      $special=$aw['number'];
+    break;
+
+    case 2:
+      $grand=$aw['number'];
+    break;
+
+    case 3:
+      $first[]=$aw['number'];
+    break;
+
+    case 4:
+      $six[]=$aw['number'];
+    break;
+
+
+  }
+
+}
+
+
+?>
 
 <table class="table table-bordered table-sm" summary="統一發票中獎號碼單"> 
    <tbody>
     <tr> 
      <th id="months">年月份</th> 
      <td headers="months" class="title">
-      <?php
-          $month=[
-          1=> <option value="1">01-02</option>,
-          2=> <option value="2">03-04</option>,
-          3=> <option value="3">05-06</option>,
-          4=> <option value="4">07-08</option>,
-          5=> <option value="5">09-10</option>,
-          6=> <option value="6">11-12</option>
-          ];
-
-      ?>
-
      <input type="number" name="year" min="<?=date("Y")-1;?>" max="<?=date("Y")+1;?>" step="1" value="<?=date("Y");?>" >年
      <select name="period" id="">
-     
+       <option value="1">01-02</option>
+       <option value="2">03-04</option>
+       <option value="3">05-06</option>
+       <option value="4">07-08</option>
+       <option value="5">09-10</option>
+       <option value="6">11-12</option>
      </select>月
     </td> 
     </tr> 
@@ -83,11 +122,4 @@
     <tr>
 </tbody>
 
-</table>
-
-<div class="text-center">
-  <input type="submit" value="儲存" class="btn btn-primary">
-  <input type="submit" value="清除" class="btn btn-dark">
-</div>
-
-</form>
+</table>                            

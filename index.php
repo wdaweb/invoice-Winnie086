@@ -7,6 +7,12 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<style>
+
+
+
+
+</style>
 
     <title>發票兌獎紀錄系統</title>
   </head>
@@ -37,7 +43,7 @@ $m=ceil(date("m")/2);
     </div>
     
     <div class="text-center">
-      <a href="?do=invoice_list">兌獎</a>  
+      <a href="?do=award_numbers">兌獎</a>  
     </div>
 
     <div class="text-center">
