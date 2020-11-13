@@ -5,9 +5,10 @@ if(isset($_GET['pd'])){
   $year=explode("-",$_GET['pd'])[0];
   $period=explode("-",$_GET['pd'])['1'];
 }else{
-  $get_new=$pdo->query("SELECT * FROM `award_numbers` order by year desc, period desc limit 1")->fetchAll();
 
-
+  $get_new=$pdo->query("SELECT * FROM `award_numbers` order by year desc, period desc limit 1")->fetch();
+  $year=$get_new['year'];
+  $period=$get_news['period'];
 
 }
 
