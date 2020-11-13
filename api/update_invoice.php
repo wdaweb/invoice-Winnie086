@@ -7,15 +7,16 @@ include_once "../base.php";
 
 $sql="update 
   invoice 
-set 
+set
   `code`='{$_POST['code']}',
   `number`='{$_POST['number']}',
   `date`='{$_POST['date']}',
-  `payment`='{$_POST['payment']}',
+  `payment`='{$_POST['payment']}'
 where
   `id`='{$_POST['id']}'";
 
-$pdo->exce($sql);
+$pdo->exec($sql);
+
 
 header("location:../index.php?do=invoice_list");
 
