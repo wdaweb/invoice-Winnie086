@@ -41,7 +41,7 @@ $m=ceil(date("m")/2);
     </div>
 
     <div class="text-center">
-      <a href="?do=invoice_list">輸入獎號</a>
+      <a href="?do=add_awards">輸入獎號</a>
     </div>
 
     <div class="text-center">
