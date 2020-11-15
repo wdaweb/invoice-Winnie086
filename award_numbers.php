@@ -1,5 +1,5 @@
 <?php
-include_once "base.php"
+include_once "base.php";
 
 if(isset($_GET['pd'])){
   $year=explode("-",$_GET['pd'])[0];
