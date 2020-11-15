@@ -5,17 +5,19 @@ if(isset($_GET['pd'])){
   $year=explode("-",$_GET['pd'])[0];
   $period=explode("-",$_GET['pd'])['1'];
 }else{
-
-  $get_new=$pdo->query("SELECT * FROM `award_numbers` order by year desc, period desc limit 1")->fetch();
-  $year=$get_new['year'];
+  $get_news=$pdo->query("SELECT * FROM `award_numbers` order by year desc, period desc limit 1")->fetch();
+  $year=$get_news['year'];
   $period=$get_news['period'];
 
 }
 
+
+
+
 // echo "year=".$year
 // echo "<br>";
 // echo "period=".$period;
-$awards=$pdo->query("select *from award_numbers where year='$year' && period='$period'")->fetchAll();
+$awards=$pdo->query("select * from award_numbers where year='$year' && period='$period'")->fetchAll();
 $special="";
 $grand="";
 $first=[];
@@ -39,11 +41,9 @@ foreach($awards as $aw){
       $six[]=$aw['number'];
     break;
 
-
   }
 
 }
-
 
 ?>
 
@@ -52,21 +52,24 @@ foreach($awards as $aw){
     <tr> 
      <th id="months">年月份</th> 
      <td headers="months" class="title">
-     <input type="number" name="year" min="<?=date("Y")-1;?>" max="<?=date("Y")+1;?>" step="1" value="<?=date("Y");?>" >年
-     <select name="period" id="">
-       <option value="1">01-02</option>
-       <option value="2">03-04</option>
-       <option value="3">05-06</option>
-       <option value="4">07-08</option>
-       <option value="5">09-10</option>
-       <option value="6">11-12</option>
-     </select>月
+      <?=$year;?>年
+    <?php
+      $month=[
+        1=>"01-02",
+        2=>"03-04",
+        3=>"05-06",
+        4=>"07-08",
+        5=>"09-10",
+        6=>"11-12"
+      ];
+    echo $month[$period];
+    ?>月
     </td> 
     </tr> 
     <tr> 
      <th id="specialPrize" rowspan="2">特別獎</th> 
      <td headers="specialPrize" class="number"> 
-     <input type="number" name="special_prize" max="99999999" min="00000001">
+       <?=$special;?>
      </td> 
     </tr> 
     <tr> 
@@ -75,7 +78,7 @@ foreach($awards as $aw){
     <tr> 
      <th id="grandPrize" rowspan="2">特獎</th> 
      <td headers="grandPrize" class="number"> 
-     <input type="number" name="grand_prize" max="99999999" min="00000001">
+       <?=$grand;?>
      </td> 
     </tr> 
     <tr> 
@@ -84,9 +87,11 @@ foreach($awards as $aw){
     <tr> 
      <th id="firstPrize" rowspan="2">頭獎</th> 
      <td headers="firstPrize" class="number"> 
-     <input type="number" name="first_prize[]" max="99999999" min="00000001">
-     <input type="number" name="first_prize[]" max="99999999" min="00000001">
-     <input type="number" name="first_prize[]" max="99999999" min="00000001">
+          <?php 
+            foreach($first as $f){
+              echo $f."<br>";
+            }
+          ?>
      </td> 
     </tr> 
     <tr> 
@@ -115,12 +120,14 @@ foreach($awards as $aw){
     <tr> 
      <th id="addSixPrize">增開六獎</th> 
      <td headers="addSixPrize" class="number">
-     <input type="number" name="addSixPrize_prize[]" max="999" min="001">
-     <input type="number" name="addSixPrize_prize[]" max="999" min="001">
-     <input type="number" name="addSixPrize_prize[]" max="999" min="001">
+        <?php
+          foreach($six as $s){
+            echo $s."<br>";
+          }
+
+        ?>
      </td> 
     </tr> 
-    <tr>
 </tbody>
 
 </table>                            

@@ -1,25 +1,17 @@
 <form action="api/add_award_number.php" method="post">
-
 <table class="table table-bordered table-sm" summary="統一發票中獎號碼單"> 
    <tbody>
     <tr> 
      <th id="months">年月份</th> 
      <td headers="months" class="title">
-      <?php
-          $month=[
-          1=> <option value="1">01-02</option>,
-          2=> <option value="2">03-04</option>,
-          3=> <option value="3">05-06</option>,
-          4=> <option value="4">07-08</option>,
-          5=> <option value="5">09-10</option>,
-          6=> <option value="6">11-12</option>
-          ];
-
-      ?>
-
-     <input type="number" name="year" min="<?=date("Y")-1;?>" max="<?=date("Y")+1;?>" step="1" value="<?=date("Y");?>" >年
-     <select name="period" id="">
-     
+      <input type="number" name="year" min="<?=date("Y")-1;?>" max="<?=date("Y")+1;?>" step="1" value="<?=date("Y");?>" >年
+      <select name="period">
+          <option value="1">01-02</option>,
+          <option value="2">03-04</option>,
+          <option value="3">05-06</option>,
+          <option value="4">07-08</option>,
+          <option value="5">09-10</option>,
+          <option value="6">11-12</option>   
      </select>月
     </td> 
     </tr> 
@@ -34,7 +26,7 @@
     </tr> 
     <tr> 
      <th id="grandPrize" rowspan="2">特獎</th> 
-     <td headers="grandPrize" class="number"> 
+     <td headers="grandPrize" class="number">
      <input type="number" name="grand_prize" max="99999999" min="00000001">
      </td> 
     </tr> 
@@ -54,7 +46,7 @@
     </tr> 
     <tr hidden> 
      <th id="twoPrize">二獎</th> 
-     <td headers="twoPrize"> 同期統一發票收執聯末7 位數號碼與頭獎中獎號碼末7 位相同者各得獎金4萬元 </td> 
+     <td headers="twoPrize"> 同期統一發票收執聯末7位數號碼與頭獎中獎號碼末7位相同者各得獎金4萬元 </td> 
     </tr> 
     <tr hidden> 
      <th id="threePrize">三獎</th> 
@@ -68,7 +60,7 @@
      <th id="fivePrize">五獎</th> 
      <td headers="fivePrize"> 同期統一發票收執聯末4 位數號碼與頭獎中獎號碼末4 位相同者各得獎金1千元 </td> 
     </tr> 
-    <tr> 
+    <tr hidden> 
      <th id="sixPrize">六獎</th> 
      <td headers="sixPrize"> 同期統一發票收執聯末3 位數號碼與 頭獎中獎號碼末3 位相同者各得獎金2百元 </td> 
     </tr> 
@@ -82,12 +74,11 @@
     </tr> 
     <tr>
 </tbody>
-
 </table>
 
 <div class="text-center">
-  <input type="submit" value="儲存" class="btn btn-primary">
-  <input type="submit" value="清除" class="btn btn-dark">
+  <input type="submit" value="儲存" class="mx-2 btn btn-primary">
+  <input type="submit" value="清除" class="mx-2 btn btn-dark">
 </div>
 
 </form>
