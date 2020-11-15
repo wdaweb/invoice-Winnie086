@@ -1,5 +1,5 @@
 <form action="api/add_invoice.php" method="post">
-  <div>日期<input type="date" name="date"></div>
+  <div>日期:<input type="date" name="date"></div>
   期別:<select name="period">
         <option value="1">一二月</option>
         <option value="2">三四月</option>
@@ -8,6 +8,7 @@
         <option value="5">九十月</option>
         <option value="6">十一、十二月</option>
     </select>
+    
     <div>發票號碼:
         <input type="text" name="code" style="width:50px">
         <input type="number" name="number" style="width:150px">
@@ -22,7 +23,6 @@
     </div>
 
   </form>
- </div>
 
 
 

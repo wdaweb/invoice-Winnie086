@@ -8,7 +8,6 @@ echo "<pre>";
 print_r(array_keys($_POST));
 echo "</pre>";
 
-
 $sql="insert into invoice(`".implode("`,`",array_keys($_POST))."`) values('".implode("','",$_POST)."')";
 echo $sql;
 $pdo->exec($sql);
