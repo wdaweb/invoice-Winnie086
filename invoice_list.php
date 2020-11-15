@@ -1,7 +1,7 @@
 <?php
 include_once "base.php";
 
-$sql="select *from `invoice` order by date desc";
+$sql="select * from `invoice` order by date desc";
 
 $rows=$pdo->query($sql)->fetchAll();
 
@@ -24,12 +24,13 @@ $rows=$pdo->query($sql)->fetchAll();
         <td><?=$row['date'];?></td>
         <td><?=$row['payment'];?></td>
         <td>
-        <button class="btn btn-sm btn-primary">
-        <a class="text-white" href="?do=edit_invoice&id=<?=$row['id'];?>"> 編輯</a></button>
+            <button class="btn btn-sm btn-primary">
+                <a class="text-white" href="?do=edit_invoice&id=<?=$row['id'];?>"> 編輯</a>
+             </button>
 
-
-        <button class="btn btn-sm btn-danger">
-        <a class="text-white" href="?do=del_invoice&id=<?=$row['id'];?>">刪除</button>
+             <button class="btn btn-sm btn-danger">
+                <a class="text-white" href="?do=del_invoice&id=<?=$row['id'];?>">刪除
+             </button>
         </td>
     </tr>
     <?php
