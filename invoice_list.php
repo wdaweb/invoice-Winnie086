@@ -31,6 +31,10 @@ $rows=$pdo->query($sql)->fetchAll();
              <button class="btn btn-sm btn-danger">
                 <a class="text-white" href="?do=del_invoice&id=<?=$row['id'];?>">刪除
              </button>
+
+             <button class="btn btn-sm btn-success">
+                <a class="text-white" href="?do=award&id=<?=$row['id'];?>">對獎
+             </button>
         </td>
     </tr>
     <?php
