@@ -1,11 +1,23 @@
 <?php
 include_once "base.php";
 
-$sql="select * from `invoice` order by date desc";
+$period=ceil(date("m")/2);
+
+$sql="select * from `invoice` where period='$period' order by date desc";
 
 $rows=$pdo->query($sql)->fetchAll();
 
 ?>
+
+<div class="row justify-content-around" style="list-style-type:none;paddin:0">
+    <li><a href="http://">1,2月</a></li>
+    <li><a href="http://">3,4月</a></li>
+    <li><a href="http://">5,6月</a></li>
+    <li><a href="http://">7,8月</a></li>
+    <li><a href="http://">9,10月</a></li>
+    <li><a href="http://">11,12月</a></li>
+</div>
+
 
 <table class="table text-center">
     <tr>

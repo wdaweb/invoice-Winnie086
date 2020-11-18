@@ -71,11 +71,10 @@ foreach($awards as $award){
             }
 
             if($res!=-1){
-
+                echo "<br>號碼:".$number;
+                echo "<br>中了{$awardStr[$res]}"."獎";
+                $all_res=1;
             }
-            echo "<br>號碼:".$number;
-            echo "<br>中了{$awardStr[$res]}"."獎";
-            $all_res=1;
             break;
         
         case 4:
@@ -91,7 +90,7 @@ foreach($awards as $award){
 }
 
 if($all_res==-1){
-    echo "下次加油!";
+    echo "下次會中獎!";
 }
 
 ?>
