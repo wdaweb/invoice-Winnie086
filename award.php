@@ -33,6 +33,8 @@ $awards=$pdo->query("select * from award_numbers where year='$year' && period='$
 // print_r($award);
 // echo "</pre>";
 
+$all_res=-1;
+
 foreach($awards as $award){
     switch($award['type']){        
         case 1:
@@ -40,6 +42,7 @@ foreach($awards as $award){
         //  echo "特別獎=".$award['number']."<br>";
             if($award['number']==$number){
             echo "<br>中了特別獎，號碼:".$number;
+            $all_res=1;
             }
         break;
 
@@ -47,29 +50,39 @@ foreach($awards as $award){
             // echo "特獎=".$award['number']."<br>";
             if($award['number']==$number){
                 echo "<br>中特獎了，號碼:".$number;
+                $all_res=1;
             }
         break;
 
         case 3:
+            $res=-1;
             // echo "頭獎=".$award['number']."<br>";
             for($i=5;$i>=0;$i--){
                 $target=mb_substr($award['number'],$i,(8-$i),'utf8');
                 $mynumber=mb_substr($number,$i,(8-$i),'utf8');
                 
                 if($target==$mynumber){
-                    echo "<br>號碼:".$number;
-                    echo "<br>中了".{$awardStr['i']}."獎";
+                  
+                    $res=$i;
                 }else{
                     break;
                     // continue
                 }
             }
+
+            if($res!=-1){
+
+            }
+            echo "<br>號碼:".$number;
+            echo "<br>中了{$awardStr[$res]}"."獎";
+            $all_res=1;
             break;
         
         case 4:
             if($award['number']==mb_substr($number,5,3,'utf8')){
                 echo "<br>號碼:".$number;
                 echo "<br>中了增開六獎";
+            $all_res=1;
             }
         break;
 
@@ -77,6 +90,8 @@ foreach($awards as $award){
     }
 }
 
-
+if($all_res==-1){
+    echo "下次加油!";
+}
 
 ?>
