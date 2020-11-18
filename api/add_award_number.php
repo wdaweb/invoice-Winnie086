@@ -17,6 +17,7 @@ award_numbers
 (`year`,`period`,`number`,`type`)
 values
 ('$year','$period','{$_POST['special_prize']}','1')";
+// echo $sql;
 $pdo->exec($sql);
 
 //特獎的新增  type=2
@@ -24,7 +25,8 @@ $sql="insert into
 award_numbers
 (`year`,`period`,`number`,`type`)
 values
-('$year','$period','{$_POST['grand_prize']})','2')";
+('$year','$period','{$_POST['grand_prize']}','2')";
+// echo $sql;
 $pdo->exec($sql);
 
 // 頭獎 type=3
@@ -59,3 +61,4 @@ echo "新增完成";
 header("location:../index.php?do=award_numbers&pd=<?".$year."-".$period);
 
 ?>
+

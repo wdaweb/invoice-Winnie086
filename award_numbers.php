@@ -17,6 +17,7 @@ if(isset($_GET['pd'])){
 // echo "year=".$year
 // echo "<br>";
 // echo "period=".$period;
+
 $awards=$pdo->query("select * from award_numbers where year='$year' && period='$period'")->fetchAll();
 $special="";
 $grand="";
