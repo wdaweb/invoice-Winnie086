@@ -1,8 +1,7 @@
 <?php
 include_once "base.php";
 
-$codeBase['AB','AC','AD','AE','AF','AG',];
-
+$codeBase=['AB','AC','AD','AE','AF','AG'];
 echo "資料產生中...";
 echo date("Y-m-d H:i:s");
 
@@ -13,6 +12,7 @@ for($i=0;$i<10000;$i++){
   
   // echo str_pad($number,8,'0',STR_PAD_LEFT)."<br>";
   $number=sprintf("%08d",rand(0,99999999));
+
   $payment=rand(1,20000);
   echo "<br>";
 
@@ -20,7 +20,8 @@ for($i=0;$i<10000;$i++){
   $end=strtotime("2020-12-31");
   $date=date("Y-m-d", rand($start,$end));
   // echo $date."<br>";
-  $period=ceil(explode("-",$date[1])/2);
+  $period=ceil(explode("-",$date)[1]/2);
+  // echo $period;
   
   $hope=[
     'code'=>$code,
@@ -28,17 +29,19 @@ for($i=0;$i<10000;$i++){
     'payment'=>$payment,
     'date'=>$date,
     'period'=>$period
-    ]
+  ];
     
     
- $sql="insert into invoice (`".implode("`,`"),array_keys($hope))
- values(`".implode("','",$hope)."`)";
+ $sql="insert into invoice (`".implode("`,`",array_keys($hope))."`) values('".implode("','",$hope)."')";
+//  echo $sql;
+ $pdo->exec($sql);
 
 
 }
 
 
-echo "資料產生中...";
+echo "<hr>";
+echo "資料新增完成...";
 echo date("Y-m-d H:i:s");
 
 

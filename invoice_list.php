@@ -7,8 +7,8 @@ $sql="select * from `invoice` where period='$period' order by date desc";
 
 $rows=$pdo->query($sql)->fetchAll();
 
-?>
 
+?>
 <div class="row justify-content-around" style="list-style-type:none;paddin:0">
     <li><a href="http://">1,2月</a></li>
     <li><a href="http://">3,4月</a></li>
@@ -37,7 +37,7 @@ $rows=$pdo->query($sql)->fetchAll();
         <td><?=$row['payment'];?></td>
         <td>
             <button class="btn btn-sm btn-primary">
-                <a class="text-white" href="?do=edit_invoice&id=<?=$row['id'];?>"> 編輯</a>
+                <a href="?do=edit_invoice&id=<?=$row['id'];?>" class="text-white"> 編輯</a>
              </button>
 
              <button class="btn btn-sm btn-danger">
