@@ -3,22 +3,23 @@ session_start();
 
 $_SESSION['err']=[];
 
-$acc=$_POST['acc'];
-
-accept('acc');
-length('acc',4,10);
 
 
-$pw=$_POST['pw'];
+accept('acc','帳號欄位不得為空');
+length('acc',4,10,'帳號長度應在4~10字元之間');
+
 accept('pw');
 length('pw',8,16);
 
+accept('name','姓名欄位不得為空');
+length('name',1,8);
 
-$name=$_POST['name'];
+accept('email');
+email('email','email格式錯誤');
+
 $birthday=$_POST['birthday'];
 $addr=$_POST['addr'];
 $tel=$_POST['tel'];
-$email=$_POST['email'];
 
 
 
@@ -32,17 +33,26 @@ if(empty($_SESSION['err'])){
 
 header("location:index.php");
 
-function accept($field){
+
+
+function accept($field,$meg='此欄位不得為空'){
     if(empty($_POST[$field])){
-        $_SESSION['err'][$field]['empty']=true;
+        $_SESSION['err'][$field]['empty']=$meg;
     }
 }
 
-function length($field,$min,$max){
+function length($field,$min,$max,$meg="長度不足"){
     if(strlen($_POST[$field])>$max || strlen($_POST[$field]) < $min){
-        $_SESSION['err'][$field]['len']=true;
+        $_SESSION['err'][$field]['len']=$meg;
     }
     
 }
 
+function email($field,$meg='email格式錯誤'){
+    $email=$_POST[$field];
+    echo mb_strpos($email,'@');
+    if(mb_strpos($email,'@')==false){
+        $_SESSION['err'][$field]['email']=$meg;
+    }
+}
 ?>
