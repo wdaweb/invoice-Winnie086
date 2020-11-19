@@ -6,25 +6,13 @@ $_SESSION['err']=[];
 $acc=$_POST['acc'];
 
 accept('acc');
-/* if(empty($acc)){
-    $_SESSION['err']['acc']['empty']=true;
-} */
 length('acc',4,10);
-/* if(strlen($acc)>10 || strlen($acc) < 4){
-    $_SESSION['err']['acc']['len']=true;
-} */
 
 
 $pw=$_POST['pw'];
 accept('pw');
-/* if(empty($pw)){
-    $_SESSION['err']['pw']['empty']=true;
-}
- */
 length('pw',8,16);
-/* if(strlen($pw)>16 || strlen($pw) < 8){
-    $_SESSION['err']['pw']['len']=true;
-} */
+
 
 $name=$_POST['name'];
 $birthday=$_POST['birthday'];
