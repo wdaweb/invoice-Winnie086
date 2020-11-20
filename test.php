@@ -15,7 +15,7 @@ function find($table,$id){
         $tmp[]=sprintf("`%s`='%s'",$key,$value);
         // $tmp[]="`".$key."`='".$value."'";
       }
-      $sql=$sql.implode(' && ',$tmp);
+      $sql=$sql.implode(' && ',$tmp); 
 
     }
     
@@ -24,51 +24,74 @@ function find($table,$id){
 }
 
 
-function all($table,...$arg){
+// function all($table,...$arg){
+//   global $pdo;
+//   // gettype($arg);
+//   // echo gettype($arg);
+
+//   $sql="select * from $table";
+  
+
+//   if(is_array($arg[0])){
+    
+//     // 製作會在where後面的句子字串(陣列格式)
+//     foreach($arg[0] as $key=>$value){
+//       $tmp[]=sprintf("`%s`='%s'",$key,$value);
+//       // $tmp[]="`".$key."`='".$value."'";
+//     }
+
+//     $sql=$sql."where".implode(' && ',$tmp);
+  
+//   }else{
+
+//     if(!isset()){}
+//     // 製作非陣列的語句接在$sql後面
+//     $sql=$sql.$arg[0];
+    
+//   }
+  
+//   if(isset($arg[1])){
+
+//     $sql=$sql.$arg[1];
+  
+//   }
+
+//   echo $sql."<br>";
+//   return $pdo->query($sql)->fetchAll();
+
+// }
+
+
+// echo "<hr>";
+// print_r(all('invoice'));
+// echo "<hr>";
+// print_r(all('invoice'),['code'=>'ET','number'=>'12597846'
+// ]);
+
+
+function del($table,$id){
   global $pdo;
-  // gettype($arg);
-  // echo gettype($arg);
+  $sql="delete from $table where";
 
-  $sql="select * from $table";
-  
-if(isset($arg[0])
+  if(is_array($id)){
 
-  if(is_array($arg[0])){
-    
-    // 製作會在where後面的句子字串(陣列格式)
-    foreach($arg[0] as $key=>$value){
+    foreach($id as $key=>$value){
       $tmp[]=sprintf("`%s`='%s'",$key,$value);
-      // $tmp[]="`".$key."`='".$value."'";
     }
-
-    $sql=$sql."where".implode(' && ',$tmp);
-  
-  }else{
-
-    if(!isset()){}
-    // 製作非陣列的語句接在$sql後面
-    $sql=$sql.$arg[0];
+    $sql=$sql.implode(' && ',$tmp);
     
-  }
-  
-  if(isset($arg[1])){
+  }else{
+    
+    $sql=$sql."id='$id'";
 
-    $sql=$sql.$arg[1];
-  
-  }
-
-  echo $sql."<br>";
-  return $pdo->query($sql)->fetchAll();
-
+    }
+    
+    // echo $sql;
+    $row=$pdo->exec($sql);
+    return $row;
 }
 
-
-echo "<hr>";
-print_r(all('invoice'));
-echo "<hr>";
-print_r(all('invoice'),['code'=>'ET','number'=>'12597846'
-]);
-
-
+$def=['code'=>'AC'];
+echo del('invoice', $def);
 
 ?>
