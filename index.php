@@ -3,10 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>統一發票紀錄及對獎系統</title>
-    <!-- Bootstrap CSS -->
+    <title>發票</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    
+
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Noto+Serif+SC:wght@200&display=swap');
+     
+   * {
+    font-family: 'Noto Serif SC', serif,'Noto Sans TC';
+   } 
+     
+     
+     
+     
      .number{
             font-size:1.2rem;
             color:red;
@@ -17,19 +27,19 @@
   </head>
   <body>
 
-  <h3 class="text-center">統一發票紀錄與對獎</h3>
+  <h4 class="text-center">發票存摺及對獎</h4>
 
   <div class="container">
      <div class="col-lg-8 col-md-12 d-flex justify-content-between p-3 mx-auto border">
         <?php
            $month=[
   
-           1=>"1,2月",
-           2=>"3,4月",
-           3=>"5,6月",
-           4=>"7,8月",
-           5=>"9,10月",
-           6=>"11,12月",
+           1=>"1-2月",
+           2=>"3-4月",
+           3=>"5-6月",
+           4=>"7-8月",
+           5=>"9-10月",
+           6=>"11-12月",
                   
           ];
 
@@ -37,22 +47,22 @@
 
         ?>
 
+    <div class="text-center">
+      <a href="index.php" class="alert alert-light p-0">輸入我的發票</a>
+    </div>
+    
+    <div class="text-center">
+      <a href="?do=invoice_list" class="alert alert-light p-0">發票存摺</a>
+    </div>
+
     <div class="text-center"><?=$month[$m];?></div>
-    
+
     <div class="text-center">
-      <a href="?do=invoice_list">當期發票</a>
-    </div>
-    
-    <div class="text-center">
-      <a href="?do=award_numbers">對獎</a>  
+      <a href="?do=add_awards" class="alert alert-light p-0">輸入開獎號碼</a>
     </div>
 
     <div class="text-center">
-      <a href="?do=add_awards">輸入獎號</a>
-    </div>
-
-    <div class="text-center">
-      <a href="index.php">回首頁</a>
+      <a href="?do=award_numbers" class="alert alert-light p-0">對獎</a>  
     </div>
 
     </div>

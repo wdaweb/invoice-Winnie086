@@ -12,7 +12,7 @@ $inv=$pdo->query($sql)->fetch();
 
   <input type="hidden" name="id" value="<?=$inv['id'];?>">
   <div>發票號碼:
-      <input type="text" name="code" style="width:35px" value="<?=$inv['code'];?>">
+      <input type="text" name="code" style="width:45px" value="<?=$inv['code'];?>"> -
       <input type="number" name="number" value="<?=$inv['number'];?>">
   </div>
   

@@ -72,13 +72,13 @@
      <input type="number" name="addSixPrize_prize[]" max="999" min="001">
      </td> 
     </tr> 
-    <tr>
+  
 </tbody>
 </table>
 
 <div class="text-center">
-  <input type="submit" value="儲存" class="mx-2 btn btn-primary">
-  <input type="submit" value="清除" class="mx-2 btn btn-dark">
+  <input type="submit" value="儲存" class="mx-2 btn btn-dark">
+  <input type="submit" value="清除" class="mx-2 btn btn-light">
 </div>
 
 </form>

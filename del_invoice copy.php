@@ -22,7 +22,7 @@ if(isset($_GET['del'])){
     
     <div class="text-center mt-4">
 
-      <button class="btn-danger">
+      <button class="btn-danger" >
          <a href="?do=del_invoice&del=1&id=<?=$_GET['id'];?>">確認</a>
          <!-- <a href="?do=del_invoice&del=true&id=<?=$_GET['id'];?>">確認</a> -->
       </button>

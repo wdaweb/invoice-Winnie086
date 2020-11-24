@@ -11,9 +11,6 @@ if(isset($_GET['pd'])){
 
 }
 
-
-
-
 // echo "year=".$year
 // echo "<br>";
 // echo "period=".$period;
@@ -49,12 +46,12 @@ foreach($awards as $aw){
 ?>
 
 <div class="row d-flex justify-content-around" style="list-style-type:none;padding:0">
-  <li><a href="">1,2月</a></li>
-  <li><a href="">3,4月</a></li>
-  <li><a href="">5,6月</a></li>
-  <li><a href="">7,8月</a></li>
-  <li><a href="">9,10月</a></li>
-  <li><a href="">11,12月</a></li>
+  <li><a href="">1-2月</a></li>
+  <li><a href="">3-4月</a></li>
+  <li><a href="">5-6月</a></li>
+  <li><a href="">7-8月</a></li>
+  <li><a href="">9-10月</a></li>
+  <li><a href="">11-12月</a></li>
 </div>
 
 <table class="table table-bordered table-sm" summary="統一發票中獎號碼單"> 
@@ -141,3 +138,7 @@ foreach($awards as $aw){
 </tbody>
 
 </table>                            
+
+<button class="btn btn-dark mx-auto">
+        <a href="?do=all_awards&year=<?=$year;?>&period=<?=$period;?>" class="text-light">對獎</a>
+</button>
