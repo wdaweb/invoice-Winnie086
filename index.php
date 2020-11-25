@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>發票</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-    
+    <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/4233378c09.js" crossorigin="anonymous"></script>
+
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Noto+Serif+SC:wght@200&display=swap');
@@ -13,7 +15,6 @@
    * {
     font-family: 'Noto Serif SC', serif,'Noto Sans TC';
    } 
-     
      
      
      

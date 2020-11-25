@@ -10,7 +10,7 @@ $period_str=[
 ];
 
 echo "現在對的發票是".$_GET['year']."年<br>";
-echo $period_str[$_GET['period']]."的發票";
+echo $period_str[$_GET['period']]."的發票<br>";
 
 //撈出該期的發票
 
@@ -73,7 +73,7 @@ foreach($invoice as $inv){
                 
                 if($award['number']==$number){
                     echo "<br>號碼=".$number."<br>";
-                    echo "<br>中了特別獎<br>";
+                    echo "中了特別獎<br>";
                     $all_res=1;
                 }
             break;
