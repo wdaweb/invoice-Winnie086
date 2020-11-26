@@ -15,11 +15,31 @@ if(isset($_GET['pd'])){
     
 }
 
-    
+
+
 ?>
+    <div class="row justify-content-around">
+    <tr>
+     <input type="number" placeholder="請輸入年" style="width:100%" class="col-3" name="year" min="<?=date("Y")-1;?>" max="<?=date("Y")+1;?>" step="1" value="<?=date("Y");?>" >
+     <select name="period" style="width:100%" class="col-3">
+          <option value="1">01-02月</option>,
+          <option value="2">03-04月</option>,
+          <option value="3">05-06月</option>,
+          <option value="4">07-08月</option>,
+          <option value="5">09-10月</option>,
+          <option value="6">11-12月</option>   
+     </select>
+    </td> 
+    </tr> 
+    <div class="text-center">
+    <input type="submit" value="查詢" class="mx-2 btn btn-dark">
+    <input type="submit" value="清除" class="mx-2 btn btn-light">
+    </div>
+    </div>
+
 
     <div class="row justify-content-around" style="list-style-type:none;paddin:0">
-    <li><a href="?do=invoice_list&pd=2020-1">1-2月</a></li>
+    <li><a href="?do=invoice_list&year=<?=$year;?>&pd=<?=$_GET['pd'];?>">1-2月</a></li>
     <li><a href="?do=invoice_list&pd=2020-2">3-4月</a></li>
     <li><a href="?do=invoice_list&pd=2020-3">5-6月</a></li>
     <li><a href="?do=invoice_list&pd=2020-4">7-8月</a></li>
