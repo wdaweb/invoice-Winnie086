@@ -94,4 +94,52 @@ function del($table,$id){
 $def=['code'=>'AC'];
 echo del('invoice', $def);
 
+
+// update || insert
+function update($table, $array){
+  global $pdo;
+  $sql="update $table set";
+  foreach($array as $key=>$value){
+
+    if($key!='id'){
+
+      $tmp[]=sprintf("`%s`='%s'",$key,$value);
+
+    }
+
+    // $tmp[]="`".$key."`='".$value."'";
+  }
+  $sql=$sql.implode(",",$tmp)."where `id`='{$array['id']}'";
+  echo $sql;
+  // $pdo->exec($sql);
+
+}
+
+function insert($table, $array){
+  global $pdo;
+  $sql="insert into $table (`".implode("`,`",array_keys($array))."`) values('".implode("','",$array)."')";
+
+  $pdo->exec($sql);
+
+}
+
+// 新增&儲存
+function save($table,$array){
+    if(isset($array)['id']){
+      // update
+      update($table,$array);
+  }else{
+    // insert
+    inset($table,$array);
+  }
+}
+
+
+
+
+
+
+
+
+
 ?>

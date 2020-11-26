@@ -98,7 +98,7 @@ foreach($invoice as $inv){
 
 
 if($all_res==-1){
-  echo "下次會中獎!";
+  echo "<br>下次會中獎!";
 }
 
 }
