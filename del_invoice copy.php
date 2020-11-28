@@ -37,9 +37,6 @@ if(isset($_GET['del'])){
 
 
 
-<php
+<?php
 }
 ?>
-
-
-

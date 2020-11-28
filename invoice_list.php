@@ -33,6 +33,22 @@ $rows=$pdo->query($sql)->fetchAll();
 
 
     <div class="row">
+    <!-------------
+    因為你do=invoice_list.php的話..到了
+    index.php時解析do的資料時
+        if(isset($_GET['do'])){
+            $file=$_GET['do'].".php";
+            //$file是把整個do的值拿來加上.php..
+            //這時你的do的值是invoice_list.php..
+            //它一加就變成了invoice_list.php.php...
+            //這時候include會找不到invoice_list.php.php這個檔案,就壞掉了
+            //所以action只要放do=invoice_list就可以了
+            include $file;
+        }else{
+            include "main.php";
+      }
+    
+    -->
     <form class="d-flex justify-content-center align-items-center" action="?do=invoice_list.php" method="$_GET">
     <div class="col-6"><input type="number" placeholder="請輸入去/今年" name="year" style="width:170px" min="<?=date("Y")-1;?>" max="<?=date("Y");?>" step="1" value="<?=date("Y");?>"></div>
     <div class="col-6"><input type="submit" style="width:150px" class="btn btn-dark" value="查詢"></div>
