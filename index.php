@@ -56,7 +56,7 @@
       <a href="?do=invoice_list" class="alert alert-light p-0">發票存摺</a>
     </div>
 
-    <div class="text-center"><?=$month[$m];?></div>
+    <div class="text-center">當期<?=$month[$m];?></div>
 
     <div class="text-center">
       <a href="?do=add_awards" class="alert alert-light p-0">輸入開獎號碼</a>
@@ -81,7 +81,7 @@
       
       include "main.php";
       
-      } 
+      }
   ?>
 </div>
 
