@@ -13,12 +13,12 @@
     </select>
     
     <div>發票號碼:
-        <input type="text" name="code" style="width:50px"> -
-        <input type="number" name="number" style="width:150px">
-    </div>
+        <input type="text" name="code" style="width:160px"  placeholder="二個大寫英字母"  maxlength="2" onkeyup="value=value.replace(/[^A-Z]/g,'')" required> -
+        <input type="number" name="number" style="width:200px" placeholder="八個數字" max="8" min="8" onkeyup="value=this.value.replace(/[^/0-9] /g,'')" required>
+    </div> 
 
     <div>發票金額:
-        <input type="number" name="payment">
+        <input type="number" name="payment" placeholder="請輸入阿拉伯數字" oninput="value=value.replace(/[^\d]/g,'')">
     </div>
 
     <br>

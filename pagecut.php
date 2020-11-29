@@ -7,6 +7,10 @@
 
     // $data_nums = mysql_num_rows($result); //統計總筆數
     $data_nums=$pdo->query($sql)->fetchAll();
+    $data_nums->columnCount()
+
+
+
 
     $per = 10; //每頁顯示項目數量
     $pages = ceil($data_nums/$per); //無條件進入法

@@ -30,7 +30,7 @@
 
   <h4 class="text-center">發票存摺及對獎</h4>
 
-  <div class="container">
+  <div class="container-fluid">
      <div class="col-lg-8 col-md-12 d-flex justify-content-between p-3 mx-auto border">
         <?php
            $month=[
