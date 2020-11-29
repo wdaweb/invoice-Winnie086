@@ -1,15 +1,30 @@
 <?php
 include_once "base.php";
 
+// if(isset($_GET['pd'])){
+//   $year=explode("_",$_GET['pd'])[0];
+//   $period=explode("_",$_GET['pd'])[1];
+// }else{
+//   $get_news=$pdo->query("SELECT * FROM `award_numbers` order by year desc, period desc limit 1")->fetch();
+//   $year=$get_news['year'];
+//   $period=$get_news['period'];
+  
+// }
 if(isset($_GET['pd'])){
-  $year=explode("-",$_GET['pd'])[0];
-  $period=explode("-",$_GET['pd'])[1];
+  $period=$_GET['pd'];
 }else{
   $get_news=$pdo->query("SELECT * FROM `award_numbers` order by year desc, period desc limit 1")->fetch();
-  $year=$get_news['year'];
   $period=$get_news['period'];
-
+  
 }
+if(isset($_GET['year'])){
+  $year=$_GET['year'];
+}else{
+  $get_news=$pdo->query("SELECT * FROM `award_numbers` order by year desc, period desc limit 1")->fetch();
+  $year=$get_news['year'];  
+}
+
+
 
 // echo "year=".$year
 // echo "<br>";
@@ -46,12 +61,12 @@ foreach($awards as $aw){
 ?>
 
 <div class="row d-flex justify-content-around" style="list-style-type:none;padding:0">
-  <li><a href="?do=award_numbers&pd=2020-1">1-2月</a></li>
-  <li><a href="?do=award_numbers&pd=2020-2">3-4月</a></li>
-  <li><a href="?do=award_numbers&pd=2020-3">5-6月</a></li>
-  <li><a href="?do=award_numbers&pd=2020-4">7-8月</a></li>
-  <li><a href="?do=award_numbers&pd=2020-5">9-10月</a></li>
-  <li><a href="?do=award_numbers&pd=2020-6">11-12月</a></li>
+  <li><a href="?do=award_numbers&year=<?=$year;?>&pd=1">1-2月</a></li>
+  <li><a href="?do=award_numbers&year=<?=$year;?>&pd=2">3-4月</a></li>
+  <li><a href="?do=award_numbers&year=<?=$year;?>&pd=3">5-6月</a></li>
+  <li><a href="?do=award_numbers&year=<?=$year;?>&pd=4">7-8月</a></li>
+  <li><a href="?do=award_numbers&year=<?=$year;?>&pd=5">9-10月</a></li>
+  <li><a href="?do=award_numbers&year=<?=$year;?>&pd=6">11-12月</a></li>
 </div>
 
 <table class="table table-bordered table-sm" summary="統一發票中獎號碼單"> 
