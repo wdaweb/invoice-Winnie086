@@ -1,15 +1,13 @@
 <?php
     //資料庫連結
     include_once "base.php";
-    $sql = "SELECT * FROM `invoice` ORDER BY `date` desc";
+    $sql = "SELECT * FROM `invoice` Where `period` ORDER BY `date` desc";
     $result = $pdo->query($sql)->fetch();
 
 
     // $data_nums = mysql_num_rows($result); //統計總筆數
-    $data_nums=$pdo->query($sql)->fetchAll();
-    $data_nums->columnCount()
-
-
+    // $data_nums=$pdo->query($sql)->fetchAll();
+    $data_nums=$pdo->columnCount();
 
 
     $per = 10; //每頁顯示項目數量
@@ -20,7 +18,8 @@
         $page = intval($_GET["page"]); //確認頁數只能夠是數值資料
     }
     $start = ($page-1)*$per; //每一頁開始的資料序號
-    $result = mysql_query($sql.' LIMIT '.$start.', '.$per,$conn) or die("Error");
+    $pdo->query()->fetcAll();
+    // $result = mysql_query($sql.' LIMIT '.$start.', '.$per,$conn) or die("Error");
 ?>
 
 <table>
@@ -32,12 +31,15 @@
 </tr>
 <?php
 //輸出資料內容
-while ($row = mysql_fetch_array ($result)){
+
+$rows=$pdo->query("select * from invoice where `code`, `number`,`date`,`payment`")->fetch();
+// while ($row = mysql_fetch_array ($result)){
+foreach($rows as $row){
     
-    $code=$row['code'];
-    $number=$row['number'];
-    $date=$row['date'];
-    $payment=$row['payment'];
+    $code=$rows['code'];
+    $number=$rows['number'];
+    $date=$rows['date'];
+    $payment=$rows['payment'];
     ?>
     
     <tr class="text-align:center;">
