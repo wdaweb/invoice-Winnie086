@@ -1,24 +1,27 @@
 <?php
     //資料庫連結
     include_once "base.php";
-    $sql = "SELECT * FROM `invoice` Where `period` ORDER BY `date` desc";
-    $result = $pdo->query($sql)->fetch();
+ 
 
-
+    $year=date("Y");
+    $period=ceil(date("m")/2);
+    $sql = "SELECT * FROM `invoice` WHERE `period`='$period' ORDER BY `date` desc";
+    
     // $data_nums = mysql_num_rows($result); //統計總筆數
     // $data_nums=$pdo->query($sql)->fetchAll();
-    $data_nums=$pdo->columnCount();
-
+    $data_nums=$pdo->query("select count(`invoice`.`id`) from `invoice` where year(`date`)='$year' && `period`='$period'")->fetch();
+    print_r($data_nums[0]);
 
     $per = 10; //每頁顯示項目數量
-    $pages = ceil($data_nums/$per); //無條件進入法
+    $pages = ceil($data_nums[0]/$per); //無條件進入法
     if (!isset($_GET["page"])){ //假如$_GET["page"]未設置
         $page=1; //則在此設定起始頁數
     } else {
         $page = intval($_GET["page"]); //確認頁數只能夠是數值資料
     }
     $start = ($page-1)*$per; //每一頁開始的資料序號
-    $pdo->query()->fetcAll();
+    $result=$pdo->query($sql.' LIMIT '.$start.','.$per)->fetchAll();
+    print_r($result);
     // $result = mysql_query($sql.' LIMIT '.$start.', '.$per,$conn) or die("Error");
 ?>
 
@@ -32,14 +35,13 @@
 <?php
 //輸出資料內容
 
-$rows=$pdo->query("select * from invoice where `code`, `number`,`date`,`payment`")->fetch();
 // while ($row = mysql_fetch_array ($result)){
-foreach($rows as $row){
+foreach($result as $row){
     
-    $code=$rows['code'];
-    $number=$rows['number'];
-    $date=$rows['date'];
-    $payment=$rows['payment'];
+    $code=$row['code'];
+    $number=$row['number'];
+    $date=$row['date'];
+    $payment=$row['payment'];
     ?>
     
     <tr class="text-align:center;">
@@ -58,7 +60,7 @@ foreach($rows as $row){
 
 <?php
     //分頁頁碼
-    echo '共 '.$data_nums.' 筆-在 '.$page.' 頁-共 '.$pages.' 頁';
+    echo '共 '.$data_nums[0].' 筆-在 '.$page.' 頁-共 '.$pages.' 頁';
     echo "<br /><a href=?page=1>首頁</a> ";
     echo "第 ";
     for( $i=1 ; $i<=$pages ; $i++ ) {
