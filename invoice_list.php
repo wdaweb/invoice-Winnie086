@@ -29,6 +29,34 @@ if (!isset($_GET["page"])){ //假如$_GET["page"]未設置
 $start = ($page-1)*$per; //每一頁開始的資料序號，資料庫中的排法跟陣列一樣，索引值從第0筆開始
 $result=$pdo->query($sql.' LIMIT '.$start.','.$per)->fetchAll();//LIMIT函式:$start顯示每頁開始的索引值、$per代表每頁要顯示幾筆資料
 // print_r($result);
+
+if(isset($_GET['page'])){
+    $thisPage=$_GET['page'];
+}else{
+    $thisPage=1;
+}
+
+// 分頁-上一頁的連結
+if(($thisPage-1)<=0){
+    $lastPage=1;
+}else{
+    $lastPage=$thisPage-1;
+}
+
+// 分頁-下一頁的連結
+if(($thisPage+1)>=$pages){
+    $nextPage=$pages;
+}else{
+    $nextPage=$thisPage+1;
+}
+
+
+
+
+
+
+
+
 ?>
 
 
@@ -41,34 +69,31 @@ $result=$pdo->query($sql.' LIMIT '.$start.','.$per)->fetchAll();//LIMIT函式:$s
 
 
     <div class="row justify-content-around" style="list-style-type:none;paddin:0">
-    <li><a href="?do=invoice_list&period=1">1-2月</a></li>
-    <li><a href="?do=invoice_list&period=2">3-4月</a></li>
-    <li><a href="?do=invoice_list&period=3">5-6月</a></li>
-    <li><a href="?do=invoice_list&period=4">7-8月</a></li>
-    <li><a href="?do=invoice_list&period=5">9-10月</a></li>
-    <li><a href="?do=invoice_list&period=6">11-12月</a></li>
+    <li><a href="?do=invoice_list&year=<?=$year;?>&period=1">1-2月</a></li>
+    <li><a href="?do=invoice_list&year=<?=$year;?>&period=2">3-4月</a></li>
+    <li><a href="?do=invoice_list&year=<?=$year;?>&period=3">5-6月</a></li>
+    <li><a href="?do=invoice_list&year=<?=$year;?>&period=4">7-8月</a></li>
+    <li><a href="?do=invoice_list&year=<?=$year;?>&period=5">9-10月</a></li>
+    <li><a href="?do=invoice_list&year=<?=$year;?>&period=6">11-12月</a></li>
     </div>
 
 <table class="table text-center">
     <tr>
-        <td>編號</td>
         <td>發票號碼</td>
         <td>消費日期</td>
         <td>消費金額</td>
         <td>操作</td>
     </tr>
 
-    <?php 
-
+    <?php
     foreach($result as $row){
-        
+    
         $code=$row['code']."-".$row['number'];
         $date=$row['date'];
         $payment=$row['payment'];
         ?>
         
-        <td></td>
-        <td><?php echo $code; ?></td>
+        <td><?php echo $code; ?></td>    
         <td><?php echo $date;?></td>
         <td><?php echo $payment;?></td>
          
@@ -90,23 +115,27 @@ $result=$pdo->query($sql.' LIMIT '.$start.','.$per)->fetchAll();//LIMIT函式:$s
 </table>
 
 
-<div class="container row justify-content-center">
-<?php
-    //分頁頁碼
-    echo "<div class='col-12'>";
-    echo '共 '.$data_nums[0].' 筆-現在在第 '.$page.' 頁-共 '.$pages.' 頁';
-    echo "</div>";
+
+ <li>共<?=$data_nums[0];?>筆-現在在第<?=$page;?>頁-共<?=$pages;?>頁</li>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+
+    <li class="page-item"><a class="page-link" href="?do=invoice_list&year=<?=$year;?>&period=<?=$period;?>&page=1">首頁</a></li>
     
+    <li class="page-item"><a class="page-link" href="?do=invoice_list&year=<?=$year;?>&period=<?=$period;?>&page=<?=$lastPage;?>">
+    <i class="fas fa-angle-double-left"></i></a></li>
     
-    echo "<div class='col-12'>";
-    echo "<br><a href=?page=1>首頁</a> ";
-    echo "第";
+    <p>第</p>
+    <?php
     for( $i=1 ; $i<=$pages ; $i++ ){
-        if ( $page-3 < $i && $i < $page+3 ){
-            echo "<a href=?page=".$i.">".$i."</a> ";
+        if ( $page-4 < $i && $i < $page+4 ){
+            echo "<li class='page-item'><a class='page-link' href=?do=invoice_list&year=$year&period=$period&page=$i>".$i."</a></li>";
         }
     } 
-    echo " 頁 <a href=?page=".$pages.">末頁</a><br /><br />";
-    echo "</div>";
-?>
-</div>
+    ?>
+    <p>頁</p>
+
+    <li class="page-item"><a class="page-link" href="?do=invoice_list&year=<?=$year;?>&period=<?=$period;?>&page=<?=$nextPage;?>"><i class="fas fa-angle-double-right"></i></a></li>
+    <li class="page-item"><a class="page-link" href="?do=invoice_list&year=<?=$year;?>&period=<?=$period;?>&page=<?=$pages;?>">末頁</a></li>
+  </ul>
+</nav>

@@ -55,15 +55,26 @@ foreach($result as $row){
 
 <br />
 
+
+<div class="container">
+<div class="row justify-content-around">
 <?php
     //分頁頁碼
+    echo "<div class='col-12'>";
     echo '共 '.$data_nums[0].' 筆-現在在第 '.$page.' 頁-共 '.$pages.' 頁';
-    echo "<br /><a href=?page=1>首頁</a> ";
-    echo "第 ";
-    for( $i=1 ; $i<=$pages ; $i++ ) {
-        if ( $page-3 < $i && $i < $page+3 ) {
-            echo "<a href=?page=".$i.">".$i."</a> ";
+    echo "</div>";
+    
+    
+    echo "<div class='col-12 col-sm-6'>";
+    echo "<br><a href=?do=invoice_list&page=1>首頁</a> ";
+    echo "第";
+    for( $i=1 ; $i<=$pages ; $i++ ){
+        if ( $page-4 < $i && $i < $page+4 ){
+            echo "<a href=?do=invoice_list&page=".$i.">".$i."</a> ";
         }
     } 
-    echo " 頁 <a href=?page=".$pages.">末頁</a><br /><br />";
+    echo " 頁 <a href=?do=invoice_list&page=".$pages.">末頁</a><br>";
+    echo "</div>";
 ?>
+</div>
+</div>
