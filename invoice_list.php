@@ -51,19 +51,17 @@ if(($thisPage+1)>=$pages){
 }
 
 
-
-
-
-
-
-
 ?>
 
 
     <div class="row justify-content-around align-items-center">
-    <form class="d-flex" action="?do=invoice_list" method="$_GET">
-    <div class="col-6"><input type="number" placeholder="請輸入去/今年" name="year" style="width:170px" min="<?=$year-1;?>" max="<?=$year;?>" step="1" value="<?=date("Y");?>"></div>
-    <div class="col-6"><input type="submit" style="width:150px" class="btn btn-dark" value="查詢"></div>
+    <form class="d-flex" action="?" method="GET">
+    <input type="hidden" name="do" value="invoice_list">
+    <div class="col-6"><input type="submit" style="width:150px" class="btn btn-dark" value="<?=$year-1;?>"></div>
+    <div class="col-6"><input type="submit" style="width:150px" class="btn btn-dark" value="<?=$year;?>">
+    
+    </div>
+    <!-- <div class="col-6"><input type="number" placeholder="請輸入去/今年" name="year" style="width:170px" min="<?=$year-1;?>" max="<?=$year;?>" step="1" value="<?=date("Y");?>"></div> -->
     </form>
     </div>
 
@@ -115,16 +113,19 @@ if(($thisPage+1)>=$pages){
 </table>
 
 
+  <ul class="pagination justify-content-center">
+ <li>共<?=$data_nums[0];?>筆-現在在第<span style="color:red"><?=$page;?></span>頁-共<?=$pages;?>頁</li>
+</ul>
 
- <li>共<?=$data_nums[0];?>筆-現在在第<?=$page;?>頁-共<?=$pages;?>頁</li>
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
+<nav>
+  <ul class="pagination justify-content-center">
 
-    <li class="page-item"><a class="page-link" href="?do=invoice_list&year=<?=$year;?>&period=<?=$period;?>&page=1">首頁</a></li>
-    
-    <li class="page-item"><a class="page-link" href="?do=invoice_list&year=<?=$year;?>&period=<?=$period;?>&page=<?=$lastPage;?>">
-    <i class="fas fa-angle-double-left"></i></a></li>
-    
+  <li class="page-item"><a class="btn btn-md btn-dark" href="?do=invoice_list&year=<?=$year;?>&period=<?=$period;?>&page=1">首頁</a></li>
+
+    <li class="page-item">
+      <a class="page-link" href="?do=invoice_list&year=<?=$year;?>&period=<?=$period;?>&page=<?=$lastPage;?>" tabindex="-1"><i class="fas fa-angle-double-left"></i></a>
+    </li>
+
     <p>第</p>
     <?php
     for( $i=1 ; $i<=$pages ; $i++ ){
@@ -135,7 +136,10 @@ if(($thisPage+1)>=$pages){
     ?>
     <p>頁</p>
 
-    <li class="page-item"><a class="page-link" href="?do=invoice_list&year=<?=$year;?>&period=<?=$period;?>&page=<?=$nextPage;?>"><i class="fas fa-angle-double-right"></i></a></li>
-    <li class="page-item"><a class="page-link" href="?do=invoice_list&year=<?=$year;?>&period=<?=$period;?>&page=<?=$pages;?>">末頁</a></li>
+    <li class="page-item">
+      <a class="page-link" href="?do=invoice_list&year=<?=$year;?>&period=<?=$period;?>&page=<?=$nextPage;?>"><i class="fas fa-angle-double-right"></i></a>
+    </li>
+
+    <li class="page-item"><a class="btn btn-md btn-dark" href="?do=invoice_list&year=<?=$year;?>&period=<?=$period;?>&page=<?=$pages;?>">末頁</a></li>
   </ul>
 </nav>
