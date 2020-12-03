@@ -7,32 +7,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
     <script src="https://kit.fontawesome.com/4233378c09.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="invoice.css">
 
-
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Noto+Serif+SC:wght@200&display=swap');
-     
-   * {
-    font-family: 'Noto Serif SC', serif,'Noto Sans TC';
-   } 
-     
-     
-     
-     .number{
-            font-size:1.2rem;
-            color:red;
-            font-weight:bolder;
-        }
-</style>
 
   </head>
   <body>
-
-  <h4 class="text-center">發票存摺及對獎</h4>
-
-  <div class="container-fluid">
-     <div class="col-lg-8 col-md-12 d-flex justify-content-between p-3 mx-auto border">
-        <?php
+  <?php
            $month=[
   
            1=>"1-2月",
@@ -47,45 +27,61 @@
           $m=ceil(date("m")/2);
 
         ?>
+  <h4 class="text-center">發票存摺及對獎</h4>
 
-    <div class="text-center">
-      <a href="index.php" class="alert alert-light p-0">輸入我的發票</a>
-    </div>
-    
-    <div class="text-center">
-      <a href="?do=invoice_list" class="alert alert-light p-0">發票存摺</a>
-    </div>
+  <div class="container-fluid d-flex flex-row">
 
-    <div class="text-center">當期<?=$month[$m];?></div>
+  <div class="nav_bar text-center">
+  <ul class="nav flex-column ">
+  <li class="nav-item">
+    <a class="nav-link disabled" tabindex="-1">現在為<?=$month[$m];?></a>
+  </li>
 
-    <div class="text-center">
-      <a href="?do=add_awards" class="alert alert-light p-0">輸入開獎號碼</a>
-    </div>
+  <li class="nav-item">
+    <a class="nav-link active p-2 btn btn-dark" href="index.php">輸入我的發票</a>
+  </li>
 
-    <div class="text-center">
-      <a href="?do=award_numbers" class="alert alert-light p-0">對獎</a>  
-    </div>
+  <li class="nav-item">
+    <a class="nav-link active p-2 btn btn-dark" href="?do=invoice_list">發票存摺</a>
+  </li>
 
-    </div>
+  <li class="nav-item">
+    <a class="nav-link active p-2 btn btn-dark" href="?do=add_awards">輸入開獎號碼</a>
+  </li>
+
+  <li class="nav-item">
+    <a class="active p-2 btn btn-dark" href="?do=award_numbers">對獎</a>
+  </li>
+
+</ul>
+</div>
+
+
+     <div class="col-lg-8 col-md-12 d-flex justify-content-between p-1 mx-auto border">
+
+         <div class="col-lg-12 col-md-12 d-flex flex-column p-0 mx-auto border">
+
+         <?php
+
+        if(isset($_GET['do'])){
+        
+         $file=$_GET['do'].".php";
+         include $file;
+        
+         }else{
+
+          include "main.php";
+
+         }
+        ?>
+        </div>
+
+      </div>
+
+
  
-
-  <div class="col-lg-8 col-md-12 d-flex flex-column p-3 mx-auto border">
-  <?php
-
-      if(isset($_GET['do'])){
-      
-      $file=$_GET['do'].".php";
-      include $file;
-      
-      }else{
-      
-      include "main.php";
-      
-      }
-  ?>
 </div>
 
-</div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>

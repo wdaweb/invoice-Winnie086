@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Noto+Serif+SC:wght@200&display=swap');
+     
+   * {
+    font-family: 'Noto Serif SC', serif,'Noto Sans TC';
+   } 
+     
+   .number{
+      font-size:1.2rem;
+      color:red;
+      font-weight:bolder;
+   }
+
+   .nav_bar{
+    background:#1d2124;;
+    width:200px;
+    display:flex;
+    border-radius:5px;
+    margin:0 auto;
+  }
+
+
+
