@@ -69,6 +69,7 @@ if(($thisPage+1)>=$pages){
 
     <ul class="pagination justify-content-center">
     <li>現在在第<span style="color:red"><?=$page;?></span>頁</li>
+    <li>-第<?=$period;?>期</li>
     </ul>
 
 
