@@ -54,16 +54,6 @@ if(($thisPage+1)>=$pages){
 ?>
 
 
-    <div class="row justify-content-around align-items-center">
-    <form class="d-flex" action="?" method="GET">
-    <input type="hidden" name="do" value="invoice_list">
-    <div class="col-6"><input type="submit" style="width:150px" class="btn btn-dark" value="<?=$year-1;?>"></div>
-    <div class="col-6"><input type="submit" style="width:150px" class="btn btn-dark" value="<?=$year;?>">
-    
-    </div>
-    <!-- <div class="col-6"><input type="number" placeholder="請輸入去/今年" name="year" style="width:170px" min="<?=$year-1;?>" max="<?=$year;?>" step="1" value="<?=date("Y");?>"></div> -->
-    </form>
-    </div>
 
 
     <div class="row justify-content-around" style="list-style-type:none;paddin:0">
@@ -74,6 +64,14 @@ if(($thisPage+1)>=$pages){
     <li><a href="?do=invoice_list&year=<?=$year;?>&period=5">9-10月</a></li>
     <li><a href="?do=invoice_list&year=<?=$year;?>&period=6">11-12月</a></li>
     </div>
+
+<br>
+
+    <ul class="pagination justify-content-center">
+    <li>現在在第<span style="color:red"><?=$page;?></span>頁</li>
+    </ul>
+
+
 
 <table class="table text-center">
     <tr>
@@ -112,10 +110,10 @@ if(($thisPage+1)>=$pages){
 
 </table>
 
+<ul class="pagination justify-content-center">
+    <li>共<?=$data_nums[0];?>筆-現在在第<span style="color:red"><?=$page;?></span>頁-共<?=$pages;?>頁</li>
+    </ul>
 
-  <ul class="pagination justify-content-center">
- <li>共<?=$data_nums[0];?>筆-現在在第<span style="color:red"><?=$page;?></span>頁-共<?=$pages;?>頁</li>
-</ul>
 
 <nav>
   <ul class="pagination justify-content-center">
