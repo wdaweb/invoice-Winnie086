@@ -18,7 +18,7 @@
     <tr> 
      <th id="specialPrize" rowspan="2">特別獎</th> 
      <td headers="specialPrize" class="number"> 
-     <input type="number" name="special_prize" max="99999999" min="00000001">
+     <input type="number" name="special_prize" max="99999999" min="00000001" placeholder="請輸入8個數字" onkeyup="value=this.value.replace(/[^/0-9] /g,'')" required>
      </td> 
     </tr> 
     <tr> 
@@ -27,7 +27,7 @@
     <tr> 
      <th id="grandPrize" rowspan="2">特獎</th> 
      <td headers="grandPrize" class="number">
-     <input type="number" name="grand_prize" max="99999999" min="00000001">
+     <input type="number" name="grand_prize" max="99999999" min="00000001" placeholder="請輸入8個數字" onkeyup="value=this.value.replace(/[^/0-9] /g,'')" required>
      </td> 
     </tr> 
     <tr> 
@@ -36,9 +36,9 @@
     <tr> 
      <th id="firstPrize" rowspan="2">頭獎</th> 
      <td headers="firstPrize" class="number"> 
-     <input type="number" name="first_prize[]" max="99999999" min="00000001">
-     <input type="number" name="first_prize[]" max="99999999" min="00000001">
-     <input type="number" name="first_prize[]" max="99999999" min="00000001">
+     <input type="number" name="first_prize[]" max="99999999" min="00000001" placeholder="請輸入8個數字" onkeyup="value=this.value.replace(/[^/0-9] /g,'')" required>
+     <input type="number" name="first_prize[]" max="99999999" min="00000001" placeholder="請輸入8個數字" onkeyup="value=this.value.replace(/[^/0-9] /g,'')" required>
+     <input type="number" name="first_prize[]" max="99999999" min="00000001" placeholder="請輸入8個數字" onkeyup="value=this.value.replace(/[^/0-9] /g,'')" required>
      </td> 
     </tr> 
     <tr> 
@@ -67,9 +67,9 @@
     <tr> 
      <th id="addSixPrize">增開六獎</th> 
      <td headers="addSixPrize" class="number">
-     <input type="number" name="addSixPrize_prize[]" max="999" min="001">
-     <input type="number" name="addSixPrize_prize[]" max="999" min="001">
-     <input type="number" name="addSixPrize_prize[]" max="999" min="001">
+     <input type="number" name="addSixPrize_prize[]" max="999" min="001" placeholder="3個數字" onkeyup="value=this.value.replace(/[^/0-9] /g,'')">
+     <input type="number" name="addSixPrize_prize[]" max="999" min="001" placeholder="3個數字" onkeyup="value=this.value.replace(/[^/0-9] /g,'')">
+     <input type="number" name="addSixPrize_prize[]" max="999" min="001" placeholder="3個數字" onkeyup="value=this.value.replace(/[^/0-9] /g,'')">
      </td> 
     </tr> 
   
